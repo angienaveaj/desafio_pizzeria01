@@ -15,19 +15,19 @@ const Home = () => {
                 <Card 
                     image={pizza01}
                     title="Pizza Napolitana"
-                    description = {["mozzarella", "tomates", "jamón", "orégano"]}
+                    ingredients = {["mozzarella", "tomates", "jamón", "orégano"]}
                     price = {5950}
                 />
                 <Card 
                     image={pizza02}
                     title="Pizza Española"
-                    description = {["mozzarella", "gorgonzola", "parmesano", "provolone"]}
+                    ingredients = {["mozzarella", "gorgonzola", "parmesano", "provolone"]}
                     price = {6950}
                 />
                 <Card 
                     image={pizza03}
                     title="Pizza Pepperoni"
-                    description = {["mozzarella", "pepperoni", "orégano"]}
+                    ingredients = {["mozzarella", "pepperoni", "orégano"]}
                     price = {6950}
                 />
             </div>

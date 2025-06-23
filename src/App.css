@@ -29,6 +29,12 @@ header {
   justify-content: center;
 }
 
+/*card footer*/
+.card-footer.d-flex.justify-content-evenly {
+  background: transparent;
+  border: none;
+}
+
 @media(min-width:900px){
   .card-img-top{
     min-height: 290px;

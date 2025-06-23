@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../assets/images/logotipo-de-pizza.png'
 
-const token = true;
+const token = false;
 const total = 25000;
 let totalFormateado = total.toLocaleString('es-CL');
 
