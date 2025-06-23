@@ -20,8 +20,8 @@ const Card = ({image, title, price, description}) => {
             </ul>
           </div>
           <div className="card-footer d-flex justify-content-evenly">
-            <button className="btn btn-dark">Ver más</button>
-            <button className="btn btn-outline-dark">Añadir</button>
+            <button className="btn btn-dark">Ver más 👁️</button>
+            <button className="btn btn-outline-dark">Añadir 🛒</button>
           </div>
         </div>
     </article>
