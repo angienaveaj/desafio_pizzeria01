@@ -1,0 +1,39 @@
+body {
+  min-height: auto;
+}
+
+#root {
+  width: 100%;
+}
+
+.navbar {
+  background-color: #333;
+  width: 100%;
+}
+
+
+header {
+  min-height: 500px;
+  height: 500px;
+}
+
+.bg-banner {
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('src/assets/images/pizza_napolitana.jpg');
+  height: 100%;
+  /*border:10px solid red;*/
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media(min-width:900px){
+  .card-img-top{
+    min-height: 290px;
+    max-height: 290px;
+    object-fit: cover;
+  }
+}
+
