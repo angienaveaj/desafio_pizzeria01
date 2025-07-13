@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
-import Home from './components/Home'
+//import Home from './components/Home'
 //import Login from './components/Login'
 //import Register from './components/Register'
+//import Cart from './components/Cart'
+import Pizza from './components/Pizza'
 import Footer from './components/Footer'
 import './App.css'
-import Cart from './components/Cart'
+
+
 
 
 function App() {
@@ -16,9 +19,10 @@ function App() {
       <Navbar />
       {/* <Login />
       <Register /> */}
-      
+      <Pizza />
       {/* <Home /> */}
-      <Cart />
+      
+      {/* <Cart /> */}
       
       <Footer />
     </>

@@ -2,6 +2,16 @@ body {
   min-height: auto;
 }
 
+h1,
+h2,
+h3 {
+  text-transform: capitalize;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
 #root {
   width: 100%;
 }
