@@ -1,9 +1,7 @@
 import React from 'react'
 import Header from './header'
 import Card from './Card'
-import pizza01 from '../assets/images/pizza-napolitana.jpg'
-import pizza02 from '../assets/images/pizza-española.jpg'
-import pizza03 from '../assets/images/pizza-pepperoni.jpg'
+import { pizzas } from '../utils/pizzas'
 
 
 const Home = () => {
@@ -12,24 +10,16 @@ const Home = () => {
         <Header />
         <div className="container-fluid py-5">
             <div className="row d-flex justify-content-center">
-                <Card 
-                    image={pizza01}
-                    title="Pizza Napolitana"
-                    ingredients = {["mozzarella", "tomates", "jamón", "orégano"]}
-                    price = {5950}
-                />
-                <Card 
-                    image={pizza02}
-                    title="Pizza Española"
-                    ingredients = {["mozzarella", "gorgonzola", "parmesano", "provolone"]}
-                    price = {6950}
-                />
-                <Card 
-                    image={pizza03}
-                    title="Pizza Pepperoni"
-                    ingredients = {["mozzarella", "pepperoni", "orégano"]}
-                    price = {6950}
-                />
+                {
+                    pizzas.map( (pizza,index ) => 
+                        <Card 
+                            image={pizza.img}
+                            title={pizza.name}
+                            ingredients = {pizza.ingredients}
+                            price = {pizza.price}
+                        />
+                    )
+                }
             </div>
         </div>
     </main>
