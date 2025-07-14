@@ -26,7 +26,7 @@ const Pizza = () => {
                 </h1>
                 <hr />
                 <h5 className="fw-600 mb-3">Ingredientes:</h5>
-                <p className="card-text h6 fw-light">
+                <p className="card-text h6 fw-light ingredientes">
                     Descripción: {pizza.ingredients ? pizza.ingredients.join(', ') : pizza.desc}
                 </p>
                 <hr />
