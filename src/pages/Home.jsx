@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './header'
-import Card from './Card'
+import Header from '../components/header'
+import Card from '../components/Card'
 //import { pizzas } from '../utils/pizzas'
-import ApiPizzas from './ApiPizzas'
+import ApiPizzas from '../components/ApiPizzas'
 
 
 const Home = () => {

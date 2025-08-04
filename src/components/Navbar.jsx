@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/images/logotipo-de-pizza.png'
+import { Link } from 'react-router-dom';
 
 const token = false;
 const total = 25000;
@@ -16,24 +17,23 @@ function Navbar () {
                 </button>
                 {token ? (
                         <>
-                        <button className="btn btn-outline-light mx-1">👨🏻‍🦲 Mi Perfil</button>
+                        <Link to="/profile" className=" px-3 btn btn-outline-light mx-1">👨🏻‍🦲 Mi Perfil </Link>
                         <button className="btn btn-outline-light mx-1">🔒 Salir</button>
                         </>
                         
                     ): (
                     <>
-                    <button className="btn btn-outline-light mx-1">🔐 Iniciar sesión</button>
-                    <button className="btn btn-outline-light mx-1">🔐 Registrarse</button> 
+                    <Link to="/login" className="px-3 btn btn-outline-light mx-1">🔐 Iniciar sesión </Link>
+                    <Link to="/register" className="px-3 btn btn-outline-light mx-1">🔐 Registrarse </Link>
                     </>
                     )  
                     }
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div className="navbar-nav ms-auto ps-2">
-                    <a className="nav-item nav-link active" href="#">🍕 Home</a>
-                    <a className="nav-item nav-link" href="#">Productos</a>
-                    <a className="nav-item nav-link" href="#">Contacto</a>
-                    <a className="btn btn-outline-light" href="#">🛒 Total: ${totalFormateado}</a>
-                    </div>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div className="navbar-nav ms-auto ps-2">
+                            <Link to="/" className="nav-link active px-3"><i className="fas fa-home me-1"></i> Home </Link>
+                            <Link to="/pizza/p001" className="nav-link px-3">Pizza </Link>
+                            <Link to="/cart" className="px-3 btn btn-outline-light">🛒 Total: ${totalFormateado} </Link>
+                        </div>
                 </div>
             </div>
         </nav>

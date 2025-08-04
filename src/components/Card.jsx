@@ -16,6 +16,7 @@ const Card = ({image, title, price, ingredients}) => {
             <div className="list-group list-group-flush text-center">
                 <h5 className="fw-bold precio ms-3 d-flex justify-content-center">Precio: ${price.toLocaleString('es-CL')}</h5>
             </div>
+            
           </div>
           <div className="card-footer d-flex justify-content-evenly">
             <button className="btn btn-dark">Ver más 👁️</button>
