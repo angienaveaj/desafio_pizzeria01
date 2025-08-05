@@ -34,7 +34,7 @@ function Navbar () {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <div className="navbar-nav ms-auto ps-2">
                             <Link to="/" className="nav-link active px-3"><i className="fas fa-home me-1"></i> Home </Link>
-                            <Link to="/pizza/p001" className="nav-link px-3">Pizza </Link>
+                            {/* <Link to="/pizza/p001" className="nav-link px-3">Pizza </Link>k7 */}
                             <Link to="/cart" className="px-3 btn btn-outline-light">🛒 Total: ${totalFormateado} </Link>
                         </div>
                 </div>

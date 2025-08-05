@@ -15,8 +15,8 @@ const Profile = () => {
           <div className="card-body text-center">
             <img src={imgPerfil} alt="avatar"
               className="rounded-circle img-fluid img-perfil" />
-            <h5 className="my-3">John Smith</h5>
-            <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+            <h5 className="my-3">Johna Smith</h5>
+            <p className="text-muted mb-4">j-smith@gmail.com</p>
           </div>
         </div>
         <div className="card mb-4 menu-dashboard">
