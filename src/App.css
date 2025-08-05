@@ -54,4 +54,17 @@ header {
   }
 }
 
+@media (min-width: 1200px) {
+  .display-1 {
+    font-size: 7rem;
+    color:#ba2100;
+  }
+}
+
+.img-perfil {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
 /*Formularios*/

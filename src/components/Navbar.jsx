@@ -1,8 +1,11 @@
 import React from 'react'
 import logo from '../assets/images/logotipo-de-pizza.png'
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faGlobe, faClipboard, faTruck, faFileInvoice, faCircleUser } from '@fortawesome/free-solid-svg-icons'
 
-const token = false;
+const token = true;
 const total = 25000;
 let totalFormateado = total.toLocaleString('es-CL');
 
@@ -17,7 +20,7 @@ function Navbar () {
                 </button>
                 {token ? (
                         <>
-                        <Link to="/profile" className=" px-3 btn btn-outline-light mx-1">👨🏻‍🦲 Mi Perfil </Link>
+                        <Link to="/profile" className=" px-3 btn btn-outline-light mx-1"><FontAwesomeIcon icon={faCircleUser} /> Mi Perfil </Link>
                         <button className="btn btn-outline-light mx-1">🔒 Salir</button>
                         </>
                         
