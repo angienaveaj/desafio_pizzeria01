@@ -1,25 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { pizzaCart } from "../utils/pizzas";
+import { CartContext } from "../context/CartProvider";
 
 const Cart = () => {
 
-    const [cart, setCart] = useState(pizzaCart)
-    function handleCantidad(id, accion) {
-        const nuevoCarrito = cart.map((element) => {
-            if(element.id === id) {
-                const nuevoContador = accion == 'incrementar' ? element.count + 1 : element.count - 1
-                return {...element, count:nuevoContador} //concatenacion
-            }
-            return element
-        })
-        .filter(element => element.count > 0)
-        setCart(nuevoCarrito)
-    }
-
-  const formatPrice = (price) =>
-    `$${price.toLocaleString('es-CL', { minimumFractionDigits: 0 })}`;
-
-  const total = cart.reduce((acc, item) => acc + item.price * item.count, 0);
+const {cart, handleCantidad, formatPrice, total} = useContext(CartContext)
 
   return (
     <div className="container my-4">

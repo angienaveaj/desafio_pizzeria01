@@ -1,20 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useEffect, useState } from 'react'
+import { CartContext } from '../context/CartProvider';
+import { DataContext } from '../context/DataProvider';
 
 const ApiPizzas = () => {
-    let [pizzas, setPizzas] = useState([])
+    const {pizzas} = useContext(DataContext)
 
-    useEffect(() => {
-      fetch('http://localhost:5000/api/pizzas')
-      .then(response => response.json())
-      .then(data => setPizzas(data))
+    const {agregarCarrito} = useContext(CartContext)
 
-    }, []);
-    
   return (
     <div className='row'>
         {pizzas.map((pizza, index) =>(
-            <article className="col-md-3 my-2">
+            <article className="col-md-3 my-2" key={pizza.id}>
                 <div className="card mx-2 h-100">
                     <img key={index} src={pizza.img} alt={pizza.name} />
                     <div className="card-body">
@@ -34,7 +31,7 @@ const ApiPizzas = () => {
                     </div>
                     <div className="card-footer d-flex justify-content-evenly">
                         <button className="btn btn-dark">Ver más 👁️</button>
-                        <button className="btn btn-outline-dark">Añadir 🛒</button>
+                        <button className="btn btn-outline-dark" onClick={() => agregarCarrito(pizza)}>Añadir 🛒</button>
                     </div>
                 </div>
             </article>

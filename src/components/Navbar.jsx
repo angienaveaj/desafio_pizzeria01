@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe, faClipboard, faTruck, faFileInvoice, faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from 'react';
+import { CartContext } from '../context/CartProvider';
 
 const token = true;
 const total = 25000;
 let totalFormateado = total.toLocaleString('es-CL');
 
 function Navbar () {
+
+    const {formatPrice, total} = useContext(CartContext)
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark text-white">
             <div className="container-fluid">
@@ -35,7 +40,7 @@ function Navbar () {
                         <div className="navbar-nav ms-auto ps-2">
                             <Link to="/" className="nav-link active px-3"><i className="fas fa-home me-1"></i> Home </Link>
                             {/* <Link to="/pizza/p001" className="nav-link px-3">Pizza </Link>k7 */}
-                            <Link to="/cart" className="px-3 btn btn-outline-light">🛒 Total: ${totalFormateado} </Link>
+                            <Link to="/cart" className="px-3 btn btn-outline-light">🛒 Total: {formatPrice(total)} </Link>
                         </div>
                 </div>
             </div>
