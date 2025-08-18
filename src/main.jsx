@@ -5,11 +5,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom';
+import { UserProvider } from './context/UserProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+    {/* 3. importar UserProvider */}
+      <UserProvider>
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </StrictMode>,
 )

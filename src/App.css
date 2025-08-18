@@ -29,7 +29,7 @@ header {
 }
 
 .bg-banner {
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('src/assets/images/pizza_napolitana.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../src/assets/images/pizza_napolitana.jpg');
   height: 100%;
   /*border:10px solid red;*/
   width: 100%;

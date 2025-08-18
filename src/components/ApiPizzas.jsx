@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import { CartContext } from '../context/CartProvider';
 import { DataContext } from '../context/DataProvider';
+import { Link } from 'react-router-dom';
 
 const ApiPizzas = () => {
     const {pizzas} = useContext(DataContext)
@@ -9,6 +10,7 @@ const ApiPizzas = () => {
     const {agregarCarrito} = useContext(CartContext)
 
   return (
+    // Cards que van en el home
     <div className='row'>
         {pizzas.map((pizza, index) =>(
             <article className="col-md-3 my-2" key={pizza.id}>
@@ -30,7 +32,7 @@ const ApiPizzas = () => {
                         </div>
                     </div>
                     <div className="card-footer d-flex justify-content-evenly">
-                        <button className="btn btn-dark">Ver más 👁️</button>
+                        <Link to={`/pizza/${pizza.id}`} className="btn btn-dark">Ver más 👁️</Link>
                         <button className="btn btn-outline-dark" onClick={() => agregarCarrito(pizza)}>Añadir 🛒</button>
                     </div>
                 </div>

@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { pizzaCart } from "../utils/pizzas";
 import { CartContext } from "../context/CartProvider";
+import { UserContext } from "../context/UserProvider";
 
 const Cart = () => {
 
 const {cart, handleCantidad, formatPrice, total} = useContext(CartContext)
+const {token} = useContext(UserContext) //traemos en token
 
   return (
     <div className="container my-4">
@@ -33,7 +35,7 @@ const {cart, handleCantidad, formatPrice, total} = useContext(CartContext)
 
       </ul>
       <h4 className="mt-4">Total: {formatPrice(total)}</h4>
-      <button className="btn btn-dark mt-2">Pagar</button>
+      <button className="btn btn-dark mt-2" disabled={token === false}>Pagar</button>
     </div>
   );
 };

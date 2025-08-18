@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import logo from '../assets/images/logotipo-de-pizza.png'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe, faClipboard, faTruck, faFileInvoice, faCircleUser } from '@fortawesome/free-solid-svg-icons'
-import { useContext } from 'react';
 import { CartContext } from '../context/CartProvider';
+import { UserContext } from '../context/UserProvider'; //importar context
 
 const token = true;
 const total = 25000;
@@ -14,19 +14,21 @@ let totalFormateado = total.toLocaleString('es-CL');
 function Navbar () {
 
     const {formatPrice, total} = useContext(CartContext)
+    const {token, logout} = useContext(UserContext) //traemos en token
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark text-white">
             <div className="container-fluid">
-                <a className="navbar-brand ms-2" href="#"><img src={logo} alt="Cuppon" className="cupon" width="100px" /></a>
+                <Link to="/" className="navbar-brand ms-2"> <img src={logo} alt="Cuppon" className="cupon" width="100px"/> </Link>               
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>  
                 </button>
+
                 {token ? (
                         <>
                         <Link to="/profile" className=" px-3 btn btn-outline-light mx-1"><FontAwesomeIcon icon={faCircleUser} /> Mi Perfil </Link>
-                        <button className="btn btn-outline-light mx-1">🔒 Salir</button>
+                        <button className="btn btn-outline-light mx-1" onClick={logout}>🔒 Salir</button>
                         </>
                         
                     ): (

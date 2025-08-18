@@ -1,11 +1,18 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartProvider';
 
 const Pizza = () => {
     let [pizza, setPizza] = useState(null)
+    const {agregarCarrito} = useContext(CartContext)
+
+    const {id} = useParams();
+    //console.log(id)
 
     useEffect(() => {
-      fetch('http://localhost:5000/api/pizzas/p001')
+      fetch(`http://localhost:5000/api/pizzas/${id}`)
       .then(response => response.json())
       .then(data => setPizza(data))
 
@@ -14,6 +21,7 @@ const Pizza = () => {
     if (!pizza) return <p className='text-center'>Cargando</p>;
     
   return (
+    // Single page pizza
     <div className="container">
         <div className='row my-4'>
             <div className="col-md-6">
@@ -35,7 +43,7 @@ const Pizza = () => {
                     <h5 className="fw-bold precio">Precio: ${pizza.price.toLocaleString('es-CL')}</h5>
                 </div>
                 <div className="d-flex justify-flex-start mt-2">
-                    <button className="btn btn-outline-dark w-100">Añadir 🛒</button>
+                    <button className="btn btn-outline-dark" onClick={() => agregarCarrito(pizza)}>Añadir 🛒</button>
                 </div>  
             </div>
                     
