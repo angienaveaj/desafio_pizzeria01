@@ -62,8 +62,36 @@ export const UserProvider = ({ children }) => {
         console.log(data.token)
     };
 
+    const obtenerUsuario = async () => {
+
+        if (token == false) {
+            alert('usuario no autenticado')
+            return
+        }
+
+        const response = await fetch('http://localhost:5000/api/auth/me', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        });
+        
+        const data = await response.json();
+
+        localStorage.setItem('email', data.email);
+
+        setEmail(data.email)
+
+    };
+
+
     return (
-        <UserContext.Provider value={{ token, logout, register, login, email }}>
+        <UserContext.Provider value={{ token, logout, register, login, email, obtenerUsuario }}>
             {children}
         </UserContext.Provider>
     );

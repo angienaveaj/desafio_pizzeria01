@@ -60,9 +60,32 @@ const CartProvider = ({children}) => {
     clearCart
   }), [cart, total])
 
+
+  const procesarCarrito = async ({cart, token}) => {
+
+        const response = await fetch('http://localhost:5000/api/checkouts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(cart)
+        });
+        
+        const data = await response.json();
+
+            clearCart(); //limpia el carrito
+            Swal.fire({
+            icon:"success",
+            title: "Compra exitosa",
+            text: "Tu compra se ha realizado exitosamente. Gracias por tu pedido.",
+            confirmButtonText: "Aceptar",
+            });
+    };
+
   return (
     <CartContext.Provider
-    value={{cart, handleCantidad, formatPrice, total, agregarCarrito, clearCart}}
+    value={{cart, handleCantidad, formatPrice, total, agregarCarrito, clearCart, procesarCarrito}}
     >
       {children}
     </CartContext.Provider>

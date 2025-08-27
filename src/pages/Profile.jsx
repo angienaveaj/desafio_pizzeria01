@@ -4,10 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe, faClipboard, faTruck, faFileInvoice, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from '../context/UserProvider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 const Profile = () => {
-  const {email, logout} = useContext(UserContext)
+  const {email, logout, obtenerUsuario} = useContext(UserContext)
+
+  useEffect(() => {
+    if(!email){
+      obtenerUsuario();
+    }
+  }, [])
+
 
   return (
     <>    

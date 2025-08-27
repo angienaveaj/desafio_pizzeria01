@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const Cart = () => {
 
-const {cart, handleCantidad, formatPrice, total, setCart, clearCart} = useContext(CartContext)
+const {cart, handleCantidad, formatPrice, total, setCart, clearCart, procesarCarrito} = useContext(CartContext)
 const {token} = useContext(UserContext) //traemos en token
 
 const [loading, setLoading] = useState(false);
@@ -30,17 +30,10 @@ const handleCompra = () => {
   }
 
   setLoading(true) //activa el indicador de carga inmediatamente
+  procesarCarrito({cart, token})
 
-  setTimeout(() => { //espera 1 segundo simulando el pago
-    setLoading(false);
-    clearCart(); //limpia el carrito
-    Swal.fire({
-    icon:"success",
-    title: "Compra exitosa",
-    text: "Tu compra se ha realizado exitosamente. Gracias por tu pedido.",
-    confirmButtonText: "Aceptar",
-    });
-  }, 1000);
+  setLoading(false) //desactiva el indicador de carga inmediatamente
+
 };
 
   return (
