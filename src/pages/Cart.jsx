@@ -9,6 +9,8 @@ const Cart = () => {
 const {cart, handleCantidad, formatPrice, total, setCart, clearCart} = useContext(CartContext)
 const {token} = useContext(UserContext) //traemos en token
 
+const [loading, setLoading] = useState(false);
+
 //
 const handleCompra = () => {
   //Si no hay token se muestra error
@@ -26,17 +28,20 @@ const handleCompra = () => {
       });
     return;
   }
-//Mensaje compra exitosa
-  Swal.fire({
+
+  setLoading(true) //activa el indicador de carga inmediatamente
+
+  setTimeout(() => { //espera 1 segundo simulando el pago
+    setLoading(false);
+    clearCart(); //limpia el carrito
+    Swal.fire({
     icon:"success",
     title: "Compra exitosa",
-    text: "Tu compra se ha provesa. Gracias por tu pedido.",
+    text: "Tu compra se ha realizado exitosamente. Gracias por tu pedido.",
     confirmButtonText: "Aceptar",
-  });
-  //LImpia el carrito
-  clearCart();
+    });
+  }, 1000);
 };
-
 
   return (
     <div className="container my-4">
@@ -65,7 +70,16 @@ const handleCompra = () => {
 
       </ul>
       <h4 className="mt-4">Total: {formatPrice(total)}</h4>
-      <button className="btn btn-dark mt-2" disabled={token === false} onClick={handleCompra}>Pagar</button>
+      <button className="btn btn-dark mt-2" disabled={token === false} onClick={handleCompra}>
+        {loading ? (
+          <>
+          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Procesando...
+          </>
+        ) : (
+          "Pagar"
+        )}
+      </button>
     </div>
   );
 };
