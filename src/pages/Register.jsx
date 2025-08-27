@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Swal from 'sweetalert2'
+import { UserContext } from '../context/UserProvider'
 
 const Register = () => {
   //datos de Registro
@@ -10,6 +11,7 @@ const Register = () => {
   const [errorCaracteres, setErrorCaracteres] = useState(false)
   const [errorCoincidencia, setErrorCoincidencia] = useState(false)
   const [mensaje, setMensaje] = useState(false)
+  const {register} = useContext(UserContext)
 
   const validarRegister = (e) => {
     e.preventDefault();
@@ -30,6 +32,8 @@ const Register = () => {
         setErrorRegister(false);
         setErrorCoincidencia(false)
         setMensaje(true)
+        register({email: correo, password: password01})
+
         Swal.fire({
             icon: 'success',
             title: 'Registro exitoso',

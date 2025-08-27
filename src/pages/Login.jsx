@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Swal from 'sweetalert2'
+import { UserContext } from '../context/UserProvider'
 
 const Login = () => {
   //datos de ingreso
@@ -8,6 +9,7 @@ const Login = () => {
   const [errorLogin, setErrorLogin] = useState(false)
   const [errorCaracteres, setErrorCaracteres] = useState(false)
   const [mensaje, setMensaje] = useState(false)
+  const {login} = useContext(UserContext)
 
   const validarLogin = (e) => {
     e.preventDefault();
@@ -22,6 +24,8 @@ const Login = () => {
         setErrorCaracteres('')
         setErrorLogin('');
         setMensaje(true)
+        login({email: correo, password})
+
         Swal.fire({
                     icon: 'success',
                     title: 'Ingreso exitoso',

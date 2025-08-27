@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe, faClipboard, faTruck, faFileInvoice, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons'
+import { UserContext } from '../context/UserProvider';
+import { useContext } from 'react';
 
 const Profile = () => {
+  const {email, logout} = useContext(UserContext)
+
   return (
     <>    
-        <section style={{ backgroundColor: "#eee" }}>
+<section style={{ backgroundColor: "#eee" }}>
   <div className="container py-5">
     <div className="row">
       <div className="col-lg-4">
@@ -16,7 +20,7 @@ const Profile = () => {
             <img src={imgPerfil} alt="avatar"
               className="rounded-circle img-fluid img-perfil" />
             <h5 className="my-3">Johna Smith</h5>
-            <p className="text-muted mb-4">j-smith@gmail.com</p>
+            <p className="text-muted mb-4">{email || ''}</p>
           </div>
         </div>
         <div className="card mb-4 menu-dashboard">
@@ -41,7 +45,7 @@ const Profile = () => {
             <hr />
             <div className="row">
               <div className="col-sm-12">
-                <button className="mb-0 btn-light p-0 bg-transparent"><FontAwesomeIcon icon={faArrowRightToBracket} /> Salir</button>
+                <button className="mb-0 btn-light p-0 bg-transparent" onClick={logout}><FontAwesomeIcon icon={faArrowRightToBracket} /> Cerrar sesión</button>
               </div>
             </div>
           </div>
@@ -53,7 +57,7 @@ const Profile = () => {
           <div className="card-body card-info-perfil-der">
             <div className="row">
               <div className="col-sm-3">
-                <p className="mb-0">Nompre y apellido:</p>
+                <p className="mb-0">Nombre y apellido:</p>
               </div>
               <div className="col-sm-9">
                 <p className="text-muted mb-0">Johnatan Smith</p>
@@ -65,7 +69,7 @@ const Profile = () => {
                 <p className="mb-0">Correo electrónico</p>
               </div>
               <div className="col-sm-9">
-                <p className="text-muted mb-0">j-smith@gmail.com</p>
+                <p className="text-muted mb-0">{email || ''}</p>
               </div>
             </div>
             <hr />
