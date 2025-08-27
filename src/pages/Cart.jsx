@@ -2,11 +2,41 @@ import { useContext, useState } from "react";
 import { pizzaCart } from "../utils/pizzas";
 import { CartContext } from "../context/CartProvider";
 import { UserContext } from "../context/UserProvider";
+import Swal from "sweetalert2";
 
 const Cart = () => {
 
-const {cart, handleCantidad, formatPrice, total} = useContext(CartContext)
+const {cart, handleCantidad, formatPrice, total, setCart, clearCart} = useContext(CartContext)
 const {token} = useContext(UserContext) //traemos en token
+
+//
+const handleCompra = () => {
+  //Si no hay token se muestra error
+  if (!token) {
+    Swal.fire({
+      icon: "error",
+      title: "Debes iniciar sesion antes de comprar",
+    });
+    return;
+  }
+  if(cart.length === 0) {
+    Swal.fire({
+        icon: "warning",
+        title: "Tu carrito está vacío",
+      });
+    return;
+  }
+//Mensaje compra exitosa
+  Swal.fire({
+    icon:"success",
+    title: "Compra exitosa",
+    text: "Tu compra se ha provesa. Gracias por tu pedido.",
+    confirmButtonText: "Aceptar",
+  });
+  //LImpia el carrito
+  clearCart();
+};
+
 
   return (
     <div className="container my-4">
@@ -35,7 +65,7 @@ const {token} = useContext(UserContext) //traemos en token
 
       </ul>
       <h4 className="mt-4">Total: {formatPrice(total)}</h4>
-      <button className="btn btn-dark mt-2" disabled={token === false}>Pagar</button>
+      <button className="btn btn-dark mt-2" disabled={token === false} onClick={handleCompra}>Pagar</button>
     </div>
   );
 };

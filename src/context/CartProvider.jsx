@@ -1,11 +1,9 @@
-import { Children, createContext } from "react"
+import { Children, createContext, useMemo } from "react"
 import { useState } from "react"
 //import { pizzaCart } from "../utils/pizzas";
 import Swal from 'sweetalert2';
 
-
 export const CartContext = createContext()
-
 
 
 const CartProvider = ({children}) => {
@@ -56,9 +54,15 @@ const CartProvider = ({children}) => {
     });
   }
 
+  const clearCart = () => setCart([])
+
+  const value = useMemo(() => ({
+    clearCart
+  }), [cart, total])
+
   return (
     <CartContext.Provider
-    value={{cart, handleCantidad, formatPrice, total, agregarCarrito}}
+    value={{cart, handleCantidad, formatPrice, total, agregarCarrito, clearCart}}
     >
       {children}
     </CartContext.Provider>
